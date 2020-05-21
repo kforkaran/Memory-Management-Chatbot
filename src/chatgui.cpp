@@ -21,7 +21,7 @@ std::string imgBasePath = dataPath + "images/";
 
 bool ChatBotApp::OnInit() {
   // create window with name and show it
-  ChatBotFrame *chatBotFrame = new ChatBotFrame(wxT("Udacity ChatBot"));
+  ChatBotFrame *chatBotFrame = new ChatBotFrame(wxT("ChatBot"));
   chatBotFrame->Show(true);
 
   return true;
@@ -89,7 +89,7 @@ void ChatBotFrameImagePanel::paintNow() {
 
 void ChatBotFrameImagePanel::render(wxDC &dc) {
   // load backgroud image from file
-  wxString imgFile = imgBasePath + "sf_bridge.jpg";
+  wxString imgFile = imgBasePath + "background.jpg";
   wxImage image;
   image.LoadFile(imgFile);
 
@@ -165,7 +165,7 @@ void ChatBotPanelDialog::paintNow() {
 
 void ChatBotPanelDialog::render(wxDC &dc) {
   wxImage image;
-  image.LoadFile(imgBasePath + "sf_bridge_inner.jpg");
+  image.LoadFile(imgBasePath + "background.jpg");
 
   wxSize sz = this->GetSize();
   wxImage imgSmall =
@@ -191,7 +191,7 @@ ChatBotPanelDialogItem::ChatBotPanelDialogItem(wxPanel *parent, wxString text,
                   : *bitmap),
       wxPoint(-1, -1), wxSize(-1, -1));
   _chatBotTxt =
-      new wxStaticText(this, wxID_ANY, text, wxPoint(-1, -1), wxSize(150, -1),
+      new wxStaticText(this, wxID_ANY, text, wxPoint(-1, -1), wxSize(250, -1),
                        wxALIGN_CENTRE | wxBORDER_NONE);
   _chatBotTxt->SetForegroundColour(isFromUser == true ? wxColor(*wxBLACK)
                                                       : wxColor(*wxWHITE));
@@ -206,5 +206,6 @@ ChatBotPanelDialogItem::ChatBotPanelDialogItem(wxPanel *parent, wxString text,
   _chatBotTxt->Wrap(150);
 
   // set background color
-  this->SetBackgroundColour((isFromUser == true ? wxT("YELLOW") : wxT("BLUE")));
+  this->SetBackgroundColour(
+      (isFromUser == true ? wxT("LIGHTBLUE") : wxT("BLUE")));
 }

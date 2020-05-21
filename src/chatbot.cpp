@@ -136,6 +136,7 @@ void ChatBot::SetCurrentNode(GraphNode *node) {
   std::uniform_int_distribution<int> dis(0, answers.size() - 1);
   std::string answer = answers.at(dis(generator));
 
+  _chatLogic->SetChatbotHandle(this);  // update ChatBot for ChatLogic
   // send selected node answer to user
   _chatLogic->SendMessageToUser(answer);
 }
