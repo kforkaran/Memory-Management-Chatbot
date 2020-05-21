@@ -27,11 +27,10 @@ class ChatBot {
   ChatBot(std::string filename);  // constructor WITH memory allocation
   ~ChatBot();
 
-  //// STUDENT CODE
-  ////
-
-  ////
-  //// EOF STUDENT CODE
+  ChatBot(const ChatBot &source);                 // copy constructor
+  ChatBot &operator=(const ChatBot &source);      // copy assignment constructor
+  ChatBot(ChatBot &&source) noexcept;             // move constructor
+  ChatBot &operator=(ChatBot &&source) noexcept;  // move assignment constructor
 
   // getters / setters
   void SetCurrentNode(GraphNode *node);
