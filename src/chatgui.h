@@ -3,6 +3,8 @@
 
 #include <wx/wx.h>
 
+#include <memory>
+
 class ChatLogic;  // forward declaration
 
 // middle part of the window containing the dialog between user and chatbot
@@ -12,13 +14,7 @@ class ChatBotPanelDialog : public wxScrolledWindow {
   wxBoxSizer *_dialogSizer;
   wxBitmap _image;
 
-  //// STUDENT CODE
-  ////
-
-  ChatLogic *_chatLogic;
-
-  ////
-  //// EOF STUDENT CODE
+  std::unique_ptr<ChatLogic> _chatLogic;
 
  public:
   // constructor / destructor
@@ -26,7 +22,7 @@ class ChatBotPanelDialog : public wxScrolledWindow {
   ~ChatBotPanelDialog();
 
   // getter / setter
-  ChatLogic *GetChatLogicHandle() { return _chatLogic; }
+  ChatLogic *GetChatLogicHandle() { return _chatLogic.get(); }
 
   // events
   void paintEvent(wxPaintEvent &evt);
